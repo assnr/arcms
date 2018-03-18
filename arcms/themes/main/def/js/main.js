@@ -93,6 +93,6 @@ layui.use(['form','element','layer','jquery'],function(){
     //外部图标
     $.get(iconUrl,function(data){
         $(".outIcons span").text(data.split(".icon-").length-1);
-    }, 'json')
+    }, 'text')
 
 })

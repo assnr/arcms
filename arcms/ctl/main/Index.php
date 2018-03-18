@@ -17,6 +17,9 @@ class Index extends Controller
     // 后台首页
     public function index()
     {
+        if (!$this->getUserService()->isLogin()) {
+            $this->redirect('login/login');
+        }
         $this->display('/index');
     }
 

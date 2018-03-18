@@ -16,11 +16,11 @@ return array(
                'config' => array(
                    'read' => array(
                        'default' => array(
-                           'dsn' => 'mysql:host=localhost;dbname=test;port=3306',
+                           'dsn' => 'mysql:host=localhost;dbname=arcms;port=3306',
                             // 用户名
                            'user' => 'root',
                             // 密码
-                           'pass' => 'root',
+                           'pass' => 'qweasd',
                            // 表前缀 建议为空
                            'prefix' => '',
 

@@ -20,4 +20,10 @@ class Login extends Controller
         $this->display('/login/login');
     }
 
+    // 退出
+    public function loginout()
+    {
+        $this->getUserService()->loginout();
+        $this->redirect('login');
+    }
 }

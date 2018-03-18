@@ -11,10 +11,19 @@ layui.use(['form','layer','jquery'],function(){
 
     //登录按钮
     form.on("submit(login)",function(data){
-        $(this).text("登录中...").attr("disabled","disabled").addClass("layui-disabled");
-        setTimeout(function(){
-            window.location.href = SERVER_PATH;
-        },1000);
+        // console.log(data.field);
+        $.post(JSON_API + 'login', data.field, data => {
+            console.log(data)
+            if (data.success == '1') {
+              $(this).text("登录中...").attr("disabled","disabled").addClass("layui-disabled");
+              setTimeout(function(){
+                  window.location.href = SERVER_PATH;
+              },1000);
+            } else {
+                layer.msg(data.error_msg);
+            }
+        }, 'json')
+
         return false;
     })
 

@@ -12,6 +12,23 @@ use \ar\core\ApiController as Controller;
 // json 接口
 class Json extends Controller
 {
+    // 登陆接口
+    public function login($userName, $password, $code)
+    {
+        $errorMsg = $this->getUserService()->login($userName, $password, $code);
+        if (is_string($errorMsg)) {
+            $this->showJsonError($errorMsg, '6001');
+        } else {
+            $this->showJsonSuccess('登陆成功', '1000');
+        }
+    }
+
+    // 生成验证码图片
+    public function code()
+    {
+        return $this->getUserService()->generateCode();
+    }
+
     public function systemParameter()
     {
         $str = <<<str

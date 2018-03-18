@@ -5,20 +5,20 @@
 	<extend name="body">
 
 		<body class="loginBody">
-			<form class="layui-form">
+			<form class="layui-form" method="post">
 				<div class="login_face"><img src="{{C.PATH.PUBLIC}}images/face.jpg" class="userAvatar"></div>
 				<div class="layui-form-item input-item">
 					<label for="userName">用户名</label>
-					<input type="text" placeholder="请输入用户名" autocomplete="off" id="userName" class="layui-input" lay-verify="required">
+					<input type="text" placeholder="请输入用户名" autocomplete="off" name="userName" id="userName" class="layui-input" lay-verify="required">
 				</div>
 				<div class="layui-form-item input-item">
 					<label for="password">密码</label>
-					<input type="password" placeholder="请输入密码" autocomplete="off" id="password" class="layui-input" lay-verify="required">
+					<input type="password" placeholder="请输入密码" autocomplete="off" name="password" id="password" class="layui-input" lay-verify="required">
 				</div>
 				<div class="layui-form-item input-item" id="imgCode">
 					<label for="code">验证码</label>
-					<input type="text" placeholder="请输入验证码" autocomplete="off" id="code" class="layui-input">
-					<img src="{{C.PATH.PUBLIC}}images/code.jpg">
+					<input type="text" placeholder="请输入验证码" autocomplete="off" name="code" id="code" class="layui-input">
+					<img src="{{\ar\core\url('json/code')}}" id="codeimg" onclick="changeCode();">
 				</div>
 				<div class="layui-form-item">
 					<button class="layui-btn layui-block" lay-filter="login" lay-submit>登录</button>
@@ -36,5 +36,10 @@
 		<script type="text/javascript" src="{{C.PATH.GPUBLIC}}layui/layui.js"></script>
 		<script type="text/javascript" src="{{C.PATH.PUBLIC}}js/page/login.js"></script>
 		<script type="text/javascript" src="{{C.PATH.PUBLIC}}js/cache.js"></script>
+		<script>
+			function changeCode() {
+				document.getElementById("codeimg").src = "{{\ar\core\url('json/code')}}?" + Math.random();
+			}
+		</script>
 	</extend>
 </import>
