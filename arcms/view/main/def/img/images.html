@@ -1,0 +1,26 @@
+<import from="/layout/global" name="html5">
+	<extend name="title">
+		图片总数--layui后台管理模板 2.0
+	</extend>
+	<extend name="body">
+		<form class="layui-form">
+			<blockquote class="layui-elem-quote news_search">
+				<div class="layui-inline">
+					<input type="checkbox" name="selectAll" id="selectAll" lay-filter="selectAll" lay-skin="primary" title="全选">
+				</div>
+				<div class="layui-inline">
+					<a class="layui-btn layui-btn-sm layui-btn-danger batchDel">批量删除</a>
+				</div>
+				<div class="layui-inline">
+					<a class="layui-btn layui-btn-sm uploadNewImg">上传新图片</a>
+				</div>
+			</blockquote>
+			<ul class="layer-photos-demo" id="Images"></ul>
+		</form>
+	</extend>
+
+	<extend name="jsfoot">
+		<script type="text/javascript" src="{{C.PATH.GPUBLIC}}layui/layui.js"></script>
+		<script type="text/javascript" src="{{C.PATH.PUBLIC}}js/page/images.js"></script>
+	</extend>
+</import>

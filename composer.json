@@ -1,0 +1,5 @@
+{
+    "require": {
+        "assnr/arphp": "^5.1"
+    }
+}

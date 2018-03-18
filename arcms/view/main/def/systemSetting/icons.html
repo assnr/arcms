@@ -1,0 +1,17 @@
+<import from="/layout/global" name="html5">
+	<extend name="title">
+		图标管理--layui后台管理模板 2.0
+	</extend>
+	<extend name="body">
+		<blockquote class="layui-elem-quote">
+			layuiCMS 2.0当前共引入<span class="layui-red iconsLength"></span>个外部图标。<span class="layui-word-aux">【点击可复制】此页面并非后台模版需要的，只是为了让大家了解都引入了哪些外部图标，实际应用中可删除。</span>
+		</blockquote>
+		<textarea id="copyText"></textarea>
+		<ul class="icons layui-row"></ul>
+	</extend>
+
+	<extend name="jsfoot">
+		<script type="text/javascript" src="{{C.PATH.GPUBLIC}}layui/layui.js"></script>
+		<script type="text/javascript" src="{{C.PATH.PUBLIC}}js/page/icons.js"></script>
+	</extend>
+</import>

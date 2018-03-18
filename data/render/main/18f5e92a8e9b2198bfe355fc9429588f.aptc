@@ -1,0 +1,23 @@
+
+<html>
+    <head>
+        <title>
+            
+    <?php echo $welcomeTitle ?>, this is html title
+  
+        </title>
+        <!-- not implement element extend name "css"  -->
+
+        <!-- not implement element extend name "jshead"  -->
+
+    </head>
+    <body>
+        
+    <h1>
+      <?php echo $welcomeTitle ?>, version: <?php echo constant("AR_VERSION") ?>
+    </h1>
+  
+    </body>
+    <!-- not implement element extend name "jsfoot"  -->
+
+</html>

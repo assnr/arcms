@@ -1,0 +1,74 @@
+<export name="html5">
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>
+      <extend name="title" />
+    </title>
+
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <script>
+      var JS_BASE = '{{C.PATH.PUBLIC}}js/';
+      var SERVER_PATH = '{{C.PATH.APP_SERVER_PATH}}';
+      var JSON_API = '{{C.PATH.APP_SERVER_PATH}}json/';
+    </script>
+
+    <link rel="stylesheet" href="{{C.PATH.GPUBLIC}}layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="{{C.PATH.PUBLIC}}css/public.css" media="all" />
+
+    <extend name="css" />
+    <extend name="jshead" />
+  </head>
+
+  <body class="childrenBody">
+    <extend name="body" />
+  </body>
+  <extend name="jsfoot" />
+
+  </html>
+</export>
+
+<export name="html5-outer">
+  <!DOCTYPE html>
+  <html class="loginHtml">
+
+  <head>
+    <meta charset="utf-8">
+    <title>
+      <extend name="title" />
+    </title>
+
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <script>
+      var JS_BASE = '{{C.PATH.PUBLIC}}js/';
+      var SERVER_PATH = '{{C.PATH.APP_SERVER_PATH}}';
+      var JSON_API = '{{C.PATH.APP_SERVER_PATH}}json/';
+    </script>
+
+    <link rel="stylesheet" href="{{C.PATH.GPUBLIC}}layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="{{C.PATH.PUBLIC}}css/public.css" media="all" />
+
+    <extend name="css" />
+    <extend name="jshead" />
+  </head>
+
+  <extend name="body" />
+
+  <extend name="jsfoot" />
+
+  </html>
+</export>

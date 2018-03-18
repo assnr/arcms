@@ -1,0 +1,46 @@
+[
+    {
+        "name": "assnr/arphp",
+        "version": "v5.1.4",
+        "version_normalized": "5.1.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/assnr/ArPHP.git",
+            "reference": "2ea7a53989aa23409d2a36696d30d5ff4f9612d5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/assnr/ArPHP/2ea7a53989aa23409d2a36696d30d5ff4f9612d5.zip",
+            "reference": "2ea7a53989aa23409d2a36696d30d5ff4f9612d5",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2018-03-16 10:44:09",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "ar": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "assnr yc",
+                "email": "ycassnr@gmail.com",
+                "homepage": "http://www.arphp.org"
+            }
+        ],
+        "description": "one high performance php framework for coder as a gift",
+        "homepage": "https://github.com/assnr/ArPHP",
+        "keywords": [
+            "high performance php framework",
+            "quick learning php"
+        ]
+    }
+]
