@@ -3,7 +3,7 @@
 - 本项目后端采用arphp 5.1，前端采用layuicms2.0，本项目适合后台管理等项目。
 - 本项目所有源码仅供学习交流，请不要用于商业
 - 源码遵循apache开源协议
-
+- [在线演示地址](http://arcms.coopcoder.com) 帐号 admin 密码 123456
 ## 安装及部署
 命令
 ```
@@ -23,4 +23,4 @@ arcms/index.php
 
 相关链接
 - [arphp(高性能组件化PHP框架)](https://github.com/assnr/arphp)
-- *arphp*接口开发加群*259956472*
+- *arphp*开发交流群*259956472*

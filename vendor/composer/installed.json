@@ -1,23 +1,23 @@
 [
     {
         "name": "assnr/arphp",
-        "version": "v5.1.4",
-        "version_normalized": "5.1.4.0",
+        "version": "v5.1.5",
+        "version_normalized": "5.1.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/assnr/ArPHP.git",
-            "reference": "2ea7a53989aa23409d2a36696d30d5ff4f9612d5"
+            "reference": "77b4068e37cdaebf294dc191bdc921db384cbdd8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://files.phpcomposer.com/files/assnr/ArPHP/2ea7a53989aa23409d2a36696d30d5ff4f9612d5.zip",
-            "reference": "2ea7a53989aa23409d2a36696d30d5ff4f9612d5",
+            "url": "https://files.phpcomposer.com/files/assnr/ArPHP/77b4068e37cdaebf294dc191bdc921db384cbdd8.zip",
+            "reference": "77b4068e37cdaebf294dc191bdc921db384cbdd8",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2018-03-16 10:44:09",
+        "time": "2018-03-18 16:48:49",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

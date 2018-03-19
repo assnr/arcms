@@ -103,7 +103,10 @@
 		<p class="layui-blue">
 			github源码下载<a target="_blank" href="https://github.com/assnr/arcms">
 				https://github.com/assnr/arcms
-			</a>
+			</a> 在线演示地址
+			<a target="_blank" href="http://arcms.coopcoder.com">
+				http://arcms.coopcoder.com
+			</a> 帐号: admin 密码 123456
 		</p>
 
 		<p>----------------以下是layuicms说明-----------------</p>
