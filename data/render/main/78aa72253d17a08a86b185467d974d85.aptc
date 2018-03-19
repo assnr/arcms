@@ -93,6 +93,20 @@
 		</div>
 	</div>
 	<blockquote class="layui-elem-quote main_btn">
+		<p class="layui-red" style="margin-bottom: 16px">
+			项目说明: 本项目后端采用arphp 5.1，前端采用layuicms2.0，本项目适合后台管理等项目。 - 本项目所有源码仅供学习交流，请不要用于商业 - 源码遵循apache开源协议
+		</p>
+		<p class="layui-blue">
+			arcms在layuicms的基础上进行了后端接口重构和后端搭建架构，加入了数据库支撑 实现功能：登陆模块，文章模块，实现了arphp框架的常用基本操作，可以直接拿着此项目进行后台的二次开发。 arphp是一款高性能的PHP开发框架，学习交流q群 259956472
+		</p>
+
+		<p class="layui-blue">
+			github源码下载<a target="_blank" href="https://github.com/assnr/arcms">
+				https://github.com/assnr/arcms
+			</a>
+		</p>
+
+		<p>----------------以下是layuicms说明-----------------</p>
 		<p>本模板基于Layui2.*实现，支持除LayIM外所有的Layui组件。<a href="http://layim.layui.com/#getAuth" target="_blank" class="layui-btn layui-btn-xs">获取LayIM授权</a>　layui开发文档地址：<a class="layui-btn layui-btn-xs layui-btn-danger" target="_blank" href="http://www.layui.com/doc">layui文档</a>　千人技术交流QQ群：
 			<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=8b7dd3ea73528c1e46c5d4e522426d60deed355caefdf481c1eacdd1b7b73bfd"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="layui后台管理模版" title="layui后台管理模版"></a>（添加时请注明来源，如：“码云”、“github”等）</p>
 		<p class="layui-red">郑重提示：本模版作为学习交流免费使用【强烈要求付费或者捐赠的我也就默默的接受了😄】，如需用作商业用途，请联系作者购买【本模版已进行作品版权证明，不管以何种形式获取的源码，请勿进行出售或者上传到任何素材网站，否则将追究相应的责任】</p>

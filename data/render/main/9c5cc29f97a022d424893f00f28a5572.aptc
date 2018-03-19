@@ -19,8 +19,9 @@
 
     <script>
       var JS_BASE = '/arphp-layuicms/arcms/themes/main/def/js/';
-      var SERVER_PATH = '/arphp-layuicms/arcms/main/';
       var JSON_API = '/arphp-layuicms/arcms/main/json/';
+      var SERVER_PATH = '/arphp-layuicms/arcms/main/';
+      var PUBLIC_PATH = '/arphp-layuicms/arcms/themes/main/def/';
     </script>
 
     <link rel="stylesheet" href="/arphp-layuicms/arcms/assets/layui/css/layui.css" media="all" />

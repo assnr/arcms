@@ -29,6 +29,42 @@ class Json extends Controller
         return $this->getUserService()->generateCode();
     }
 
+    /**需要做验证的接口**/
+
+    // 添加新闻
+    public function addNews()
+    {
+        $data = \ar\core\post();
+        $addSuccess = $this->getDataService()->addNews($data);
+        if ($addSuccess) {
+            $this->showJsonSuccess('添加新闻成功');
+        } else {
+            $this->showJsonError('添加新闻失败', '6002');
+        }
+    }
+
+    // 删除文章
+    public function delNews($newsId)
+    {
+        $delResult = $this->getDataService()->delNews($newsId);
+        if ($delResult) {
+            $this->showJsonSuccess('删除文章成功');
+        } else {
+            $this->showJsonError('删除失败，可能数据不存在', '6003');
+        }
+    }
+
+    // 设置置顶
+    public function setNewsTop($id, $value)
+    {
+        $setResult = $this->getDataService()->setNewsTop($id, $value);
+        if ($setResult) {
+            $this->showJsonSuccess('操作成功');
+        } else {
+            $this->showJsonError('操作失败，请稍后重试', '6004');
+        }
+    }
+
     public function systemParameter()
     {
         $str = <<<str
@@ -76,14 +112,18 @@ str;
 
     public function newsImg()
     {
+        $upObj = \ar\core\comp('ext.upload');
+        $uploadResult = $upObj->upload('file', '', 'img');
+        // 转换成server路径
+        $src = \ar\core\comp('url.route')->serverPath($uploadResult['full_path_name']);
         $str = '
         {
-  	"code": 0,
-  	"msg": "",
-  	"data":{
-  		"src": "'.\ar\core\cfg('PATH.PUBLIC').'images/userface1.jpg",
-  		"title" : "文章内容图片"
-  	}
+    "code": 0,
+    "msg": "",
+    "data":{
+      "src": "'. $src .'",
+      "title" : "文章内容图片"
+    }
   }';
         echo $str;
     }
@@ -399,6 +439,7 @@ str;
 
     public function images()
     {
+        $publicImg = \ar\core\cfg('PATH.PUBLIC');
         $str = <<<str
         {
   	"title": "图片管理",
@@ -406,188 +447,188 @@ str;
   	"start": 0,
   	"data": [
   		{
-  			"src": "images/userface1.jpg",
-  			"thumb": "images/userface1.jpg",
+  			"src": "{$publicImg}images/userface1.jpg",
+  			"thumb": "{$publicImg}images/userface1.jpg",
   			"alt": "美女生活照1",
   			"pid":"1"
   		},
   		{
-  			"src": "images/userface2.jpg",
-  			"thumb": "images/userface2.jpg",
+  			"src": "{$publicImg}images/userface2.jpg",
+  			"thumb": "{$publicImg}images/userface2.jpg",
   			"alt": "美女生活照2",
   			"pid":"2"
   		},
   		{
-  			"src": "images/userface3.jpg",
-  			"thumb": "images/userface3.jpg",
+  			"src": "{$publicImg}images/userface3.jpg",
+  			"thumb": "{$publicImg}images/userface3.jpg",
   			"alt": "美女生活照3",
   			"pid":"3"
   		},
   		{
-  			"src": "images/userface4.jpg",
-  			"thumb": "images/userface4.jpg",
+  			"src": "{$publicImg}images/userface4.jpg",
+  			"thumb": "{$publicImg}images/userface4.jpg",
   			"alt": "美女生活照4",
   			"pid":"4"
   		},
   		{
-  			"src": "images/userface5.jpg",
-  			"thumb": "images/userface5.jpg",
+  			"src": "{$publicImg}images/userface5.jpg",
+  			"thumb": "{$publicImg}images/userface5.jpg",
   			"alt": "美女生活照5",
   			"pid":"5"
   		},
   		{
-  			"src": "images/userface1.jpg",
-  			"thumb": "images/userface1.jpg",
+  			"src": "{$publicImg}images/userface1.jpg",
+  			"thumb": "{$publicImg}images/userface1.jpg",
   			"alt": "美女生活照6",
   			"pid":"6"
   		},
   		{
-  			"src": "images/userface2.jpg",
-  			"thumb": "images/userface2.jpg",
+  			"src": "{$publicImg}images/userface2.jpg",
+  			"thumb": "{$publicImg}images/userface2.jpg",
   			"alt": "美女生活照7",
   			"pid":"7"
   		},
   		{
-  			"src": "images/userface3.jpg",
-  			"thumb": "images/userface3.jpg",
+  			"src": "{$publicImg}images/userface3.jpg",
+  			"thumb": "{$publicImg}images/userface3.jpg",
   			"alt": "美女生活照8",
   			"pid":"8"
   		},
   		{
-  			"src": "images/userface4.jpg",
-  			"thumb": "images/userface4.jpg",
+  			"src": "{$publicImg}images/userface4.jpg",
+  			"thumb": "{$publicImg}images/userface4.jpg",
   			"alt": "美女生活照9",
   			"pid":"9"
   		},
   		{
-  			"src": "images/userface5.jpg",
-  			"thumb": "images/userface5.jpg",
+  			"src": "{$publicImg}images/userface5.jpg",
+  			"thumb": "{$publicImg}images/userface5.jpg",
   			"alt": "美女生活照10",
   			"pid":"10"
   		},
   		{
-  			"src": "images/userface1.jpg",
-  			"thumb": "images/userface1.jpg",
+  			"src": "{$publicImg}images/userface1.jpg",
+  			"thumb": "{$publicImg}images/userface1.jpg",
   			"alt": "美女生活照11",
   			"pid":"11"
   		},
   		{
-  			"src": "images/userface2.jpg",
-  			"thumb": "images/userface2.jpg",
+  			"src": "{$publicImg}images/userface2.jpg",
+  			"thumb": "{$publicImg}images/userface2.jpg",
   			"alt": "美女生活照12",
   			"pid":"12"
   		},
   		{
-  			"src": "images/userface3.jpg",
-  			"thumb": "images/userface3.jpg",
+  			"src": "{$publicImg}images/userface3.jpg",
+  			"thumb": "{$publicImg}images/userface3.jpg",
   			"alt": "美女生活照13",
   			"pid":"13"
   		},
   		{
-  			"src": "images/userface4.jpg",
-  			"thumb": "images/userface4.jpg",
+  			"src": "{$publicImg}images/userface4.jpg",
+  			"thumb": "{$publicImg}images/userface4.jpg",
   			"alt": "美女生活照14",
   			"pid":"14"
   		},
   		{
-  			"src": "images/userface5.jpg",
-  			"thumb": "images/userface5.jpg",
+  			"src": "{$publicImg}images/userface5.jpg",
+  			"thumb": "{$publicImg}images/userface5.jpg",
   			"alt": "美女生活照15",
   			"pid":"15"
   		},
   		{
-  			"src": "images/userface1.jpg",
-  			"thumb": "images/userface1.jpg",
+  			"src": "{$publicImg}images/userface1.jpg",
+  			"thumb": "{$publicImg}images/userface1.jpg",
   			"alt": "美女生活照16",
   			"pid":"16"
   		},
   		{
-  			"src": "images/userface2.jpg",
-  			"thumb": "images/userface2.jpg",
+  			"src": "{$publicImg}images/userface2.jpg",
+  			"thumb": "{$publicImg}images/userface2.jpg",
   			"alt": "美女生活照17",
   			"pid":"17"
   		},
   		{
-  			"src": "images/userface3.jpg",
-  			"thumb": "images/userface3.jpg",
+  			"src": "{$publicImg}images/userface3.jpg",
+  			"thumb": "{$publicImg}images/userface3.jpg",
   			"alt": "美女生活照18",
   			"pid":"18"
   		},
   		{
-  			"src": "images/userface4.jpg",
-  			"thumb": "images/userface4.jpg",
+  			"src": "{$publicImg}images/userface4.jpg",
+  			"thumb": "{$publicImg}images/userface4.jpg",
   			"alt": "美女生活照19",
   			"pid":"19"
   		},
   		{
-  			"src": "images/userface5.jpg",
-  			"thumb": "images/userface5.jpg",
+  			"src": "{$publicImg}images/userface5.jpg",
+  			"thumb": "{$publicImg}images/userface5.jpg",
   			"alt": "美女生活照20",
   			"pid":"20"
   		},
   		{
-  			"src": "images/userface1.jpg",
-  			"thumb": "images/userface1.jpg",
+  			"src": "{$publicImg}images/userface1.jpg",
+  			"thumb": "{$publicImg}images/userface1.jpg",
   			"alt": "美女生活照21",
   			"pid":"21"
   		},
   		{
-  			"src": "images/userface2.jpg",
-  			"thumb": "images/userface2.jpg",
+  			"src": "{$publicImg}images/userface2.jpg",
+  			"thumb": "{$publicImg}images/userface2.jpg",
   			"alt": "美女生活照22",
   			"pid":"22"
   		},
   		{
-  			"src": "images/userface3.jpg",
-  			"thumb": "images/userface3.jpg",
+  			"src": "{$publicImg}images/userface3.jpg",
+  			"thumb": "{$publicImg}images/userface3.jpg",
   			"alt": "美女生活照23",
   			"pid":"23"
   		},
   		{
-  			"src": "images/userface4.jpg",
-  			"thumb": "images/userface4.jpg",
+  			"src": "{$publicImg}images/userface4.jpg",
+  			"thumb": "{$publicImg}images/userface4.jpg",
   			"alt": "美女生活照24",
   			"pid":"24"
   		},
   		{
-  			"src": "images/userface5.jpg",
-  			"thumb": "images/userface5.jpg",
+  			"src": "{$publicImg}images/userface5.jpg",
+  			"thumb": "{$publicImg}images/userface5.jpg",
   			"alt": "美女生活照25",
   			"pid":"25"
   		},
   		{
-  			"src": "images/userface1.jpg",
-  			"thumb": "images/userface1.jpg",
+  			"src": "{$publicImg}images/userface1.jpg",
+  			"thumb": "{$publicImg}images/userface1.jpg",
   			"alt": "美女生活照26",
   			"pid":"26"
   		},
   		{
-  			"src": "images/userface2.jpg",
-  			"thumb": "images/userface2.jpg",
+  			"src": "{$publicImg}images/userface2.jpg",
+  			"thumb": "{$publicImg}images/userface2.jpg",
   			"alt": "美女生活照27",
   			"pid":"27"
   		},
   		{
-  			"src": "images/userface3.jpg",
-  			"thumb": "images/userface3.jpg",
+  			"src": "{$publicImg}images/userface3.jpg",
+  			"thumb": "{$publicImg}images/userface3.jpg",
   			"alt": "美女生活照28",
   			"pid":"28"
   		},
   		{
-  			"src": "images/userface4.jpg",
-  			"thumb": "images/userface4.jpg",
+  			"src": "{$publicImg}images/userface4.jpg",
+  			"thumb": "{$publicImg}images/userface4.jpg",
   			"alt": "美女生活照29",
   			"pid":"29"
   		},
   		{
-  			"src": "images/userface5.jpg",
-  			"thumb": "images/userface5.jpg",
+  			"src": "{$publicImg}images/userface5.jpg",
+  			"thumb": "{$publicImg}images/userface5.jpg",
   			"alt": "美女生活照30",
   			"pid":"30"
   		},
   		{
-  			"src": "images/userface3.jpg",
-  			"thumb": "images/userface3.jpg",
+  			"src": "{$publicImg}images/userface3.jpg",
+  			"thumb": "{$publicImg}images/userface3.jpg",
   			"alt": "美女生活照31",
   			"pid":"31"
   		}
@@ -752,6 +793,16 @@ str;
 
     public function newsList()
     {
+        $newslists = $this->getDataService()->newslist($this->request);
+        $backJson = [
+            'code' => 0,
+            'msg' => '',
+            'count' => $newslists['count'],
+            'data' => $newslists['news'],
+        ];
+        $this->showJson($backJson, array('data' => true));
+        return;
+
         $str = <<<str
         {
         	"code": 0,

@@ -22,9 +22,13 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             {field: 'newsName', title: '文章标题', width:350},
             {field: 'newsAuthor', title: '发布者', align:'center'},
             {field: 'newsStatus', title: '发布状态',  align:'center',templet:"#newsStatus"},
-            {field: 'newsLook', title: '浏览权限', align:'center'},
+            // {field: 'newsLook', title: '浏览权限', align:'center'},
             {field: 'newsTop', title: '是否置顶', align:'center', templet:function(d){
-                return '<input type="checkbox" name="newsTop" lay-filter="newsTop" lay-skin="switch" lay-text="是|否" '+d.newsTop+'>'
+                if (d.newsTop == 1) {
+                  return '<input type="checkbox" checked name="newsTop" value="'+d.newsId+'" lay-filter="newsTop" lay-skin="switch" lay-text="是|否" '+d.newsTop+'>'
+                } else {
+                  return '<input type="checkbox" name="newsTop" value="'+d.newsId+'" lay-filter="newsTop" lay-skin="switch" lay-text="是|否" '+d.newsTop+'>'
+                }
             }},
             {field: 'newsTime', title: '发布时间', align:'center', minWidth:110, templet:function(d){
                 return d.newsTime.substring(0,10);
@@ -36,14 +40,23 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     //是否置顶
     form.on('switch(newsTop)', function(data){
         var index = layer.msg('修改中，请稍候',{icon: 16,time:false,shade:0.8});
-        setTimeout(function(){
-            layer.close(index);
-            if(data.elem.checked){
-                layer.msg("置顶成功！");
-            }else{
-                layer.msg("取消置顶成功！");
-            }
-        },500);
+        var setval;
+        console.log(data.elem.checked);
+        console.log(data.value);
+        if (data.elem.checked) {
+            setval = 1;
+        } else {
+            setval = 0;
+        }
+        $.get(JSON_API + 'setNewsTop', {id : data.value, value: setval}, (res) => {
+          layer.close(index);
+          if(data.elem.checked){
+              layer.msg("置顶成功！");
+          }else{
+              layer.msg("取消置顶成功！");
+          }
+        }, 'json');
+
     })
 
     //搜索【此功能需要后台配合，所以暂时没有动态效果演示】
@@ -71,6 +84,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
+                    body.find(".newsId").val(edit.newsId);
                     body.find(".newsName").val(edit.newsName);
                     body.find(".abstract").val(edit.abstract);
                     body.find(".thumbImg").attr("src",edit.newsImg);
@@ -107,12 +121,12 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
                 newsId.push(data[i].newsId);
             }
             layer.confirm('确定删除选中的文章？', {icon: 3, title: '提示信息'}, function (index) {
-                // $.get("删除文章接口",{
-                //     newsId : newsId  //将需要删除的newsId作为参数传入
-                // },function(data){
-                tableIns.reload();
-                layer.close(index);
-                // })
+                $.get(JSON_API + 'delNews',{
+                    newsId : newsId  //将需要删除的newsId作为参数传入
+                },function(data){
+                  tableIns.reload();
+                  layer.close(index);
+                })
             })
         }else{
             layer.msg("请选择需要删除的文章");
@@ -128,12 +142,15 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
             addNews(data);
         } else if(layEvent === 'del'){ //删除
             layer.confirm('确定删除此文章？',{icon:3, title:'提示信息'},function(index){
-                // $.get("删除文章接口",{
-                //     newsId : data.newsId  //将需要删除的newsId作为参数传入
-                // },function(data){
+                $.post(JSON_API + 'delNews', {
+                    newsId : data.newsId  //将需要删除的newsId作为参数传入
+                },function(data){
+                    // if (data.success == '1') {
+                    //
+                    // }
                     tableIns.reload();
                     layer.close(index);
-                // })
+                }, 'json')
             });
         } else if(layEvent === 'look'){ //预览
             layer.alert("此功能需要前台展示，实际开发中传入对应的必要参数进行文章内容页面访问")

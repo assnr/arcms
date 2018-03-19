@@ -13,11 +13,11 @@ layui.use(['form','layer','layedit','laydate','upload'],function(){
     //上传缩略图
     upload.render({
         elem: '.thumbBox',
-        url: JSON_API + "userface",
-        method : "get",  //此处是为了演示之用，实际使用中请将此删除，默认用post方式提交
+        url: JSON_API + "newsImg",
+        method : "post",  //此处是为了演示之用，实际使用中请将此删除，默认用post方式提交
         done: function(res, index, upload){
-            var num = parseInt(4*Math.random());  //生成0-4的随机数，随机显示一个头像信息
-            $('.thumbImg').attr('src',res.data[num].src);
+            // var num = parseInt(4*Math.random());  //生成0-4的随机数，随机显示一个头像信息
+            $('.thumbImg').attr('src',res.data.src);
             $('.thumbBox').css("background","#fff");
         }
     });
@@ -70,25 +70,34 @@ layui.use(['form','layer','layedit','laydate','upload'],function(){
         //弹出loading
         var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
         // 实际使用时的提交信息
-        // $.post("上传路径",{
-        //     newsName : $(".newsName").val(),  //文章标题
-        //     abstract : $(".abstract").val(),  //文章摘要
-        //     content : layedit.getContent(editIndex).split('<audio controls="controls" style="display: none;"></audio>')[0],  //文章内容
-        //     newsImg : $(".thumbImg").attr("src"),  //缩略图
-        //     classify : '1',    //文章分类
-        //     newsStatus : $('.newsStatus select').val(),    //发布状态
-        //     newsTime : submitTime,    //发布时间
-        //     newsTop : data.filed.newsTop == "on" ? "checked" : "",    //是否置顶
-        // },function(res){
-        //
-        // })
-        setTimeout(function(){
-            top.layer.close(index);
+        $.post(JSON_API + 'addNews',{
+            newsId : $(".newsId").val(),  //修改时用到
+            newsName : $(".newsName").val(),  //文章标题
+            abstract : $(".abstract").val(),  //文章摘要
+            content : layedit.getContent(editIndex).split('<audio controls="controls" style="display: none;"></audio>')[0],  //文章内容
+            newsImg : $(".thumbImg").attr("src"),  //缩略图
+            classify : '1',    //文章分类
+            newsStatus : $('.newsStatus select').val(),    //发布状态
+            newsTime : submitTime,    //发布时间
+            // newsTop : data.field.newsTop == "on" ? "checked" : "",    //是否置顶
+            newsTop : data.field.newsTop == "on" ? "1" : "0",    //是否置顶
+        },function(res){
+          top.layer.close(index);
+          if (res.success === '1') {
             top.layer.msg("文章添加成功！");
-            layer.closeAll("iframe");
-            //刷新父页面
-            parent.location.reload();
-        },500);
+            setTimeout(function(){
+                top.layer.close(index);
+                top.layer.msg("文章添加成功！");
+                layer.closeAll("iframe");
+                //刷新父页面
+                parent.location.reload();
+            },500);
+          } else {
+            top.layer.msg(res.error_msg);
+          }
+          return;
+        }, 'json')
+
         return false;
     })
 

@@ -26,9 +26,9 @@ return array(
 
                            // 连接选项 数据库需要支持PDO扩展 PDO开启后请取消注释下面行，否则看不到SQL报错或者编码错误
                            'option' => array(
-                                // PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                                // PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
-                                // PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'',
+                                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                                PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true,
+                                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\'',
                             ),
                         ),
                     ),

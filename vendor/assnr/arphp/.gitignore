@@ -2,3 +2,5 @@
 packagistnotify
 .tags*
 vendor
+arcms/upload
+data
